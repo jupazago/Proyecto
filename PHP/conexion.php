@@ -4,7 +4,7 @@
     //Valores para pruebas
 
     $db_host="localhost";           //Nombre del Servidor
-    $db_nombre_bd="usuarios";       //Nombre de la base de datos
+    $db_nombre_bd="bd_proyecto";       //Nombre de la base de datos
     $db_usuario="root";             //Usuario
     $db_contrasenia="";             //Clave
 
@@ -21,4 +21,6 @@
     //incluya caracteres latinos
     mysqli_set_charset($conexion,"uft8");   
     
+    //Recordar cerrar la conexion al finalizar cada consulta
+    //mysqli_close($conexion);
 ?>
