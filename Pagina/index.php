@@ -1,18 +1,8 @@
 <?php
-try {
-    //Verificar si existe el archivo de conexion
-    if(!file_exists('../PHP/conexion.php')){
-        throw new Exception ('File conexion no existe',1);  //NO existe, captura excepcion
-    }else{
+    //Incluir el archivo que contiene las funciones del lenguaje PHP
+    require_once("../PHP/funciones.php");
 
-        require_once("../PHP/conexion.php");                //SI Existe, continuar
-    }
-
-} catch (Exception $excepcion) {
-    //Captura de excepcion y su respectivo codigo
-    echo 'Excepción capturada: ' .  $excepcion->getMessage(), "<br>";
-	echo 'Código: ' . $excepcion->getCode(), "<br>";
-}
+    existencia_de_la_conexion();    //Verificamos la funcion
 
 ?>
 
