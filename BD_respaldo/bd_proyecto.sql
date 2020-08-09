@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 28-07-2020 a las 04:21:07
+-- Tiempo de generación: 31-07-2020 a las 01:49:46
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -62,14 +62,14 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 DROP TABLE IF EXISTS `detalle_factura`;
 CREATE TABLE IF NOT EXISTS `detalle_factura` (
   `id_detalle` int(11) NOT NULL AUTO_INCREMENT,
-  `id_facturacion` int(11) NOT NULL,
-  `id_producto` int(11) NOT NULL,
+  `id_facturacion1` int(11) NOT NULL,
+  `id_producto1` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `precio_detalle` int(11) NOT NULL,
   `estado` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_detalle`),
-  UNIQUE KEY `id_facturacion` (`id_facturacion`),
-  UNIQUE KEY `id_producto` (`id_producto`)
+  KEY `id_producto1` (`id_producto1`) USING BTREE,
+  KEY `id_facturacion1` (`id_facturacion1`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -83,13 +83,22 @@ CREATE TABLE IF NOT EXISTS `empleado` (
   `id_empleado` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_empleado` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `identificacion_empleado` int(11) NOT NULL,
-  `id_login` int(11) NOT NULL,
+  `id_login1` int(11) NOT NULL,
   `direccion_empleado` text COLLATE utf8_spanish_ci NOT NULL,
   `telefono_empleado` text COLLATE utf8_spanish_ci NOT NULL,
   `estado` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_empleado`),
-  UNIQUE KEY `id_login` (`id_login`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  UNIQUE KEY `id_login1` (`id_login1`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `empleado`
+--
+
+INSERT INTO `empleado` (`id_empleado`, `nombre_empleado`, `identificacion_empleado`, `id_login1`, `direccion_empleado`, `telefono_empleado`, `estado`) VALUES
+(1, 'JUAN PABLO ZAPATA', 741852963, 1, 'San Luis', '123456789', 'ACTIVO'),
+(2, 'OSNEIDER MONTOYA', 852963741, 4, 'Todo lado', '123456789', 'ACTIVO'),
+(3, 'EDWARD GIRALDO', 963741852, 3, 'El Peñol', '123456789', 'ACTIVO');
 
 -- --------------------------------------------------------
 
@@ -100,16 +109,16 @@ CREATE TABLE IF NOT EXISTS `empleado` (
 DROP TABLE IF EXISTS `facturacion`;
 CREATE TABLE IF NOT EXISTS `facturacion` (
   `id_facturacion` int(11) NOT NULL AUTO_INCREMENT,
-  `id_cliente` int(11) NOT NULL,
+  `id_cliente1` int(11) NOT NULL,
   `fecha` datetime NOT NULL,
-  `id_modo_pago` int(11) NOT NULL,
-  `id_empleado` int(11) NOT NULL,
+  `id_modo_pago1` int(11) NOT NULL,
+  `id_empleado1` int(11) NOT NULL,
   `precio_total` int(11) NOT NULL,
   `estado` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_facturacion`),
-  UNIQUE KEY `id_cliente` (`id_cliente`),
-  UNIQUE KEY `id_modo_pago` (`id_modo_pago`),
-  UNIQUE KEY `id_empleado` (`id_empleado`)
+  UNIQUE KEY `id_cliente1` (`id_cliente1`) USING BTREE,
+  UNIQUE KEY `id_empleado1` (`id_empleado1`) USING BTREE,
+  UNIQUE KEY `id_modo_pago1` (`id_modo_pago1`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -123,11 +132,20 @@ CREATE TABLE IF NOT EXISTS `login` (
   `id_login` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `pass` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `id_tipo_usuario` int(11) NOT NULL,
+  `id_tipo_usuario1` int(11) NOT NULL,
   `estado` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_login`),
-  UNIQUE KEY `id_tipo_usuario` (`id_tipo_usuario`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  KEY `id_tipo_usuario1` (`id_tipo_usuario1`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `login`
+--
+
+INSERT INTO `login` (`id_login`, `user`, `pass`, `id_tipo_usuario1`, `estado`) VALUES
+(1, 'jupazago', '123456789', 1, 'ACTIVO'),
+(3, 'edwardG', '123456789', 1, 'ACTIVO'),
+(4, 'osneiderM', '123456789', 1, 'ACTIVO');
 
 -- --------------------------------------------------------
 
@@ -154,14 +172,14 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `id_producto` int(11) NOT NULL AUTO_INCREMENT,
   `cod_producto` bigint(20) NOT NULL,
   `nombre_producto` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `id_categoria` int(11) NOT NULL,
+  `id_categoria1` int(11) NOT NULL,
   `descripcion` text COLLATE utf8_spanish_ci NOT NULL,
   `precio_producto` int(11) NOT NULL,
-  `id_proveedor` int(11) NOT NULL,
+  `id_proveedor1` int(11) NOT NULL,
   `estado` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_producto`),
-  UNIQUE KEY `id_categoria` (`id_categoria`),
-  UNIQUE KEY `id_proveedor` (`id_proveedor`)
+  KEY `id_categoria1` (`id_categoria1`) USING BTREE,
+  KEY `id_proveedor1` (`id_proveedor1`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -192,7 +210,16 @@ CREATE TABLE IF NOT EXISTS `tipo_usuario` (
   `tipo_de_usuario` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `estado` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_tipo_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tipo_usuario`
+--
+
+INSERT INTO `tipo_usuario` (`id_tipo_usuario`, `tipo_de_usuario`, `estado`) VALUES
+(1, 'Administrador', 'ACTIVO'),
+(2, 'Empleado Entendido', 'ACTIVO'),
+(3, 'Empleado', 'Activo');
 
 --
 -- Restricciones para tablas volcadas
@@ -202,35 +229,35 @@ CREATE TABLE IF NOT EXISTS `tipo_usuario` (
 -- Filtros para la tabla `detalle_factura`
 --
 ALTER TABLE `detalle_factura`
-  ADD CONSTRAINT `detalle_factura_ibfk_1` FOREIGN KEY (`id_facturacion`) REFERENCES `facturacion` (`id_facturacion`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `detalle_factura_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `detalle_factura_ibfk_1` FOREIGN KEY (`id_facturacion1`) REFERENCES `facturacion` (`id_facturacion`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `detalle_factura_ibfk_2` FOREIGN KEY (`id_producto1`) REFERENCES `producto` (`id_producto`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `empleado`
 --
 ALTER TABLE `empleado`
-  ADD CONSTRAINT `empleado_ibfk_1` FOREIGN KEY (`id_login`) REFERENCES `login` (`id_login`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `empleado_ibfk_1` FOREIGN KEY (`id_login1`) REFERENCES `login` (`id_login`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `facturacion`
 --
 ALTER TABLE `facturacion`
-  ADD CONSTRAINT `facturacion_ibfk_1` FOREIGN KEY (`id_modo_pago`) REFERENCES `modo_de_pago` (`id_modo_pago`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `facturacion_ibfk_2` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `facturacion_ibfk_3` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `facturacion_ibfk_1` FOREIGN KEY (`id_modo_pago1`) REFERENCES `modo_de_pago` (`id_modo_pago`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `facturacion_ibfk_2` FOREIGN KEY (`id_cliente1`) REFERENCES `cliente` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `facturacion_ibfk_3` FOREIGN KEY (`id_empleado1`) REFERENCES `empleado` (`id_empleado`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `login`
 --
 ALTER TABLE `login`
-  ADD CONSTRAINT `login_ibfk_1` FOREIGN KEY (`id_tipo_usuario`) REFERENCES `tipo_usuario` (`id_tipo_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `login_ibfk_1` FOREIGN KEY (`id_tipo_usuario1`) REFERENCES `tipo_usuario` (`id_tipo_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `producto`
 --
 ALTER TABLE `producto`
-  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `producto_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `categoria_productos` (`id_categoria`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_proveedor1`) REFERENCES `proveedor` (`id_proveedor`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `producto_ibfk_2` FOREIGN KEY (`id_categoria1`) REFERENCES `categoria_productos` (`id_categoria`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
