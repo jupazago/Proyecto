@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Inio de Sesión</title>
     <script type="text/javascript" src="../JavaScript/funciones.js"></script>
 </head>
 <body>
@@ -19,10 +19,9 @@
         <h2>Usuario</h2>
         <input type="text" name="formulario_usuario" id="formulario_usuario"/>
         <h2>Clave</h2>
-        <input type="text" name="formulario_clave" id="formulario_clave"/>
+        <input type="password" name="formulario_clave" id="formulario_clave"/>
         <br><br>
         <input type="submit" value="Iniciar Sesión" id="enviar">
     </form>
-    <div id="respuesta"></div>
 </body>
 </html>

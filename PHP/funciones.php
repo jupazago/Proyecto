@@ -17,7 +17,7 @@
             echo 'Código: ' . $excepcion->getCode(), "<br>";
         }
     }
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     function iniciar_sesion($usuario, $clave){
         
@@ -57,5 +57,187 @@
         return $tipo_de_cuenta;
         
     }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    function registrar_empleado(){
+        ?>
+        <div>
+        <form id="form_registrar_empleado" method="POST">
+            <fieldset>
+                <legend>Agregar nuevo empleado/administrador:</legend>
+                <label>Nombre:</label><br>
+                <input type="text" id="registrar_nombre" name="registrar_nombre"><br><br>
+                <label>Identificación:</label><br>
+                <input type="number" id="registrar_identificacion" name="registrar_identificacion"><br><br>
+                <label>Dirección:</label><br>
+                <input type="text" id="registrar_direccion" name="registrar_direccion"><br><br>
+                <label>Teléfono:</label><br>
+                <input type="text" id="registrar_telefono" name="registrar_telefono"><br><br>
+                <label>Usuario:</label><br>
+                <input type="text" id="registrar_usuario" name="registrar_usuario"><br><br>
+                <label>Clave:</label><br>
+                <input type="text" id="registrar_clave" name="registrar_clave"><br><br>
+                <label>Tipo de Cuenta:</label><br>
+                <input list="tipo_cuenta" name="tipo_cuenta">
+                    <datalist id="tipo_cuenta">
+                    <?php
+                        if(existencia_de_la_conexion()){
+                            require_once("../PHP/conexion.php");    //Hacer conexion con la base de datos
+                        }
+                        $conexion = conectar();                     //Obtenemos la conexion
+                        
+                        //Consulta a la base de datos en la tabla login
+                        $consulta = mysqli_query($conexion, "SELECT `id_tipo_usuario`,`tipo_de_usuario` FROM `tipo_usuario` WHERE `estado`='ACTIVO'") or die ("Error al consultar: tipos de usuarios");
 
+                        while (($fila = mysqli_fetch_array($consulta))!=NULL){
+                            // traemos los tipos de usuario existentes en la base de datos
+                            $BD_id_tipo_usuario = $fila['id_tipo_usuario'];
+                            $BD_tipo_de_usuario = $fila['tipo_de_usuario'];
+                            echo "<option value=".$BD_id_tipo_usuario." label=".$BD_tipo_de_usuario."></option>";
+                        }
+                        mysqli_free_result($consulta); //Liberar espacio de consulta cuando ya no es necesario
+                    ?>
+                    </datalist><br><br>
+                    
+                <button type="button" id="Enviar">Registrar</button>
+                <input type="reset" value="Limpiar">
+            </fieldset>
+        </form>
+        <div id="respuesta1"></div>
+        <script>
+            $('#Enviar').click(function(){
+                $.ajax({
+                    url:'../PHP/consulta1.php',
+                    type:'POST',
+                    data: $('#form_registrar_empleado').serialize(),
+                    success: function(res){
+                        $('#respuesta1').html(res);
+                    },
+                    error: function(res){
+                        alert("Problemas al tratar de enviar el formulario");
+                    }
+                });
+            });
+        </script>
+        </div>
+    <?php
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+    function modificar_empleado(){
+        
+        ?>
+        
+        <form id="form_inactivar_empleado" method="POST">
+            <fieldset>
+                <legend>Activar o Inactivar cuenta del empleado/administrador:</legend>
+                <label>Identificación:</label><br>
+                <input type="text" id="consultar_identificacion" name="consultar_identificacion"><br><br>
+                <button type="button" id="Enviar2">Continuar</button>
+                <input type="reset" value="Limpiar">
+            </fieldset>
+        </form>
+        <div id="respuesta2"></div>
+        <script>
+            $('#Enviar2').click(function(){
+                $.ajax({
+                    url:'../PHP/consulta2.php',
+                    type:'POST',
+                    data: $('#form_inactivar_empleado').serialize(),
+                    success: function(res){
+                        $('#respuesta2').html(res);
+                    },
+                    error: function(res){
+                        alert("Problemas al tratar de enviar el formulario");
+                    }
+                });
+            });
+        </script>
+        <?php
+    }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    function ver_cuentas_empleado(){
+        ?>
+        <form id="form_ver_empleados" method="POST">
+            <fieldset>
+                <legend>Información completa de cuentas</legend>
+                <button type="button" id="Enviar3">Ver Información</button>
+            </fieldset>
+        </form>
+        <div id="respuesta3"></div>
+        <script>
+            $('#Enviar3').click(function(){
+                $.ajax({
+                    url:'../PHP/consulta3.php',
+                    type:'POST',
+                    data: $('#form_ver_empleados').serialize(),
+                    success: function(res){
+                        $('#respuesta3').html(res);
+                    },
+                    error: function(res){
+                        alert("Problemas al tratar de enviar el formulario");
+                    }
+                });
+            });
+        </script>
+    <?PHP
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    function registrar_producto(){
+        ?>
+        <form id="form_registrar_producto" method="POST">
+            <fieldset>
+            <legend>Registrar producto</legend>
+                <label>Código:</label><br>
+                <input type="text" id="registrar_nombre" name="registrar_nombre"><br><br>
+                <label>Nombre:</label><br>
+                <input type="text" id="registrar_identificacion" name="registrar_identificacion"><br><br>
+                <label>Descripción:</label><br>
+                <input type="text" id="registrar_direccion" name="registrar_direccion"><br><br>
+                <label>Precio:</label><br>
+                <input type="text" id="registrar_telefono" name="registrar_telefono"><br><br>
+                <label>Proveedor:</label><br>
+                <input list="nom_proveedor" name="nom_proveedor">
+                    <datalist id="nom_proveedor">
+                    <?php
+                        if(existencia_de_la_conexion()){
+                            require_once("../PHP/conexion.php");    //Hacer conexion con la base de datos
+                        }
+                        $conexion = conectar();                     //Obtenemos la conexion
+                        
+                        //Consulta a la base de datos en la tabla provvedor
+                        $consulta = mysqli_query($conexion, "SELECT `nombre_proveedor` FROM `proveedor` ORDER BY `nombre_proveedor` ASC") or die ("Error al consultar: proveedores");
+
+                        while (($fila = mysqli_fetch_array($consulta))!=NULL){
+                            // traemos los proveedores existentes en la base de datos
+                            $BD_nombre_proveedor = $fila['nombre_proveedor'];
+                            echo "<option value=".$BD_nombre_proveedor."></option>";
+                        }
+                        mysqli_free_result($consulta); //Liberar espacio de consulta cuando ya no es necesario
+                    ?>
+                    </datalist><br><br>
+                    
+                <button type="button" id="Enviar4">Registrar</button>
+                <input type="reset" value="Limpiar">
+            </fieldset>
+        </form>
+        <div id="respuesta4"></div>
+        <script>
+            $('#Enviar4').click(function(){
+                $.ajax({
+                    url:'../PHP/consulta4.php',
+                    type:'POST',
+                    data: $('#form_registrar_producto').serialize(),
+                    success: function(res){
+                        $('#respuesta4').html(res);
+                    },
+                    error: function(res){
+                        alert("Problemas al tratar de enviar el formulario");
+                    }
+                });
+            });
+        </script>
+    <?PHP
+    }
 ?>

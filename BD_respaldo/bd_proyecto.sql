@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 31-07-2020 a las 01:49:46
+-- Tiempo de generación: 09-08-2020 a las 16:13:13
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 
 --
 -- Base de datos: `bd_proyecto`
---
+
+-- `USE bd_proyecto`
 
 -- --------------------------------------------------------
 
@@ -218,8 +219,8 @@ CREATE TABLE IF NOT EXISTS `tipo_usuario` (
 
 INSERT INTO `tipo_usuario` (`id_tipo_usuario`, `tipo_de_usuario`, `estado`) VALUES
 (1, 'Administrador', 'ACTIVO'),
-(2, 'Empleado Entendido', 'ACTIVO'),
-(3, 'Empleado', 'Activo');
+(2, 'Empleado_Entendido', 'ACTIVO'),
+(3, 'Empleado', 'ACTIVO');
 
 --
 -- Restricciones para tablas volcadas
