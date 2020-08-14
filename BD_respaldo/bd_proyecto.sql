@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 09-08-2020 a las 16:13:13
+-- Tiempo de generación: 14-08-2020 a las 03:17:01
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -20,22 +20,7 @@ SET time_zone = "+00:00";
 
 --
 -- Base de datos: `bd_proyecto`
-
--- `USE bd_proyecto`
-
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `categoria_productos`
---
-
-DROP TABLE IF EXISTS `categoria_productos`;
-CREATE TABLE IF NOT EXISTS `categoria_productos` (
-  `id_categoria` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre_categoria` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `estado` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id_categoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -90,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `empleado` (
   `estado` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_empleado`),
   UNIQUE KEY `id_login1` (`id_login1`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `empleado`
@@ -99,7 +84,9 @@ CREATE TABLE IF NOT EXISTS `empleado` (
 INSERT INTO `empleado` (`id_empleado`, `nombre_empleado`, `identificacion_empleado`, `id_login1`, `direccion_empleado`, `telefono_empleado`, `estado`) VALUES
 (1, 'JUAN PABLO ZAPATA', 741852963, 1, 'San Luis', '123456789', 'ACTIVO'),
 (2, 'OSNEIDER MONTOYA', 852963741, 4, 'Todo lado', '123456789', 'ACTIVO'),
-(3, 'EDWARD GIRALDO', 963741852, 3, 'El Peñol', '123456789', 'ACTIVO');
+(3, 'EDWARD GIRALDO', 963741852, 3, 'El Peñol', '123456789', 'ACTIVO'),
+(7, 'PRUEBA', 555555, 11, 'nueva direcciÃ³n', '3154654545', 'ACTIVO'),
+(8, 'NUEVO EMPLEADO', 456321, 12, 'nueva direcciÃ³n 2', '315447844', 'ACTIVO');
 
 -- --------------------------------------------------------
 
@@ -137,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `login` (
   `estado` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_login`),
   KEY `id_tipo_usuario1` (`id_tipo_usuario1`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `login`
@@ -146,7 +133,9 @@ CREATE TABLE IF NOT EXISTS `login` (
 INSERT INTO `login` (`id_login`, `user`, `pass`, `id_tipo_usuario1`, `estado`) VALUES
 (1, 'jupazago', '123456789', 1, 'ACTIVO'),
 (3, 'edwardG', '123456789', 1, 'ACTIVO'),
-(4, 'osneiderM', '123456789', 1, 'ACTIVO');
+(4, 'osneiderM', '123456789', 1, 'ACTIVO'),
+(11, 'nuevo', 'nuevoxd', 3, 'ACTIVO'),
+(12, 'xdnuevo', '214545', 2, 'ACTIVO');
 
 -- --------------------------------------------------------
 
@@ -173,15 +162,22 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `id_producto` int(11) NOT NULL AUTO_INCREMENT,
   `cod_producto` bigint(20) NOT NULL,
   `nombre_producto` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `id_categoria1` int(11) NOT NULL,
+  `id_categoria1` int(11) DEFAULT NULL,
   `descripcion` text COLLATE utf8_spanish_ci NOT NULL,
   `precio_producto` int(11) NOT NULL,
   `id_proveedor1` int(11) NOT NULL,
   `estado` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_producto`),
-  KEY `id_categoria1` (`id_categoria1`) USING BTREE,
   KEY `id_proveedor1` (`id_proveedor1`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`id_producto`, `cod_producto`, `nombre_producto`, `id_categoria1`, `descripcion`, `precio_producto`, `id_proveedor1`, `estado`) VALUES
+(1, 6970301340065, 'bombillo luminoso', NULL, 'luminosito xd', 6000, 4, 'ACTIVO'),
+(2, 47400097742, 'Desodorante 107g', NULL, 'Sport Triumph', 12500, 5, 'ACTIVO');
 
 -- --------------------------------------------------------
 
@@ -197,7 +193,18 @@ CREATE TABLE IF NOT EXISTS `proveedor` (
   `telefono_proveedor` text COLLATE utf8_spanish_ci NOT NULL,
   `estado` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_proveedor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `proveedor`
+--
+
+INSERT INTO `proveedor` (`id_proveedor`, `nombre_proveedor`, `direccion_proveedor`, `telefono_proveedor`, `estado`) VALUES
+(1, 'Colanta', 'Rionegro, calle inventada y casa inventada xd', 'llame prro', 'ACTIVO'),
+(2, 'Auralac', 'otra vez Rionegro', '3125343 lo que sea', 'ACTIVO'),
+(3, 'Colombina', 'por medellin', '521 2456 4845 (4)', 'ACTIVO'),
+(4, 'AngelLight', 'ni idea', 'ni idea', 'ACTIVO'),
+(5, 'Gillette', 'medellin crr fsdbfjksdbf', '34513254531 (6)', 'ACTIVO');
 
 -- --------------------------------------------------------
 
@@ -257,8 +264,7 @@ ALTER TABLE `login`
 -- Filtros para la tabla `producto`
 --
 ALTER TABLE `producto`
-  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_proveedor1`) REFERENCES `proveedor` (`id_proveedor`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `producto_ibfk_2` FOREIGN KEY (`id_categoria1`) REFERENCES `categoria_productos` (`id_categoria`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_proveedor1`) REFERENCES `proveedor` (`id_proveedor`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

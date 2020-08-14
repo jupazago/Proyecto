@@ -20,9 +20,9 @@
 </head>
 <body>
     <?php
-        registrar_empleado();
-        modificar_empleado();
-        ver_cuentas_empleado();
+        //registrar_empleado();
+        //modificar_empleado();
+        //ver_cuentas_empleado();
         registrar_producto();
     ?>
 </body>

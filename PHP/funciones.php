@@ -190,13 +190,13 @@
             <fieldset>
             <legend>Registrar producto</legend>
                 <label>Código:</label><br>
-                <input type="text" id="registrar_nombre" name="registrar_nombre"><br><br>
+                <input type="text" id="registrar_codigo" name="registrar_codigo"><br><br>
                 <label>Nombre:</label><br>
-                <input type="text" id="registrar_identificacion" name="registrar_identificacion"><br><br>
-                <label>Descripción:</label><br>
-                <input type="text" id="registrar_direccion" name="registrar_direccion"><br><br>
+                <input type="text" id="registrar_nombre" name="registrar_nombre"><br><br>
                 <label>Precio:</label><br>
-                <input type="text" id="registrar_telefono" name="registrar_telefono"><br><br>
+                <input type="number" id="registrar_precio" name="registrar_precio"><br><br>
+                <label>Descripción:</label><br>
+                <textarea id="registrar_descripcion" name="registrar_descripcion" rows="4" cols="50"></textarea><br><br>
                 <label>Proveedor:</label><br>
                 <input list="nom_proveedor" name="nom_proveedor">
                     <datalist id="nom_proveedor">
