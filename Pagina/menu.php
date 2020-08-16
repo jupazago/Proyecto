@@ -20,10 +20,12 @@
 </head>
 <body>
     <?php
-        //registrar_empleado();
-        //modificar_empleado();
-        //ver_cuentas_empleado();
+        registrar_empleado();
+        modificar_empleado();
+        ver_cuentas_empleado();
         registrar_producto();
+        registrar_proveedor();
+        modificar_producto();
     ?>
 </body>
 </html>

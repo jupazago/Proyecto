@@ -80,6 +80,7 @@
                 <input list="tipo_cuenta" name="tipo_cuenta">
                     <datalist id="tipo_cuenta">
                     <?php
+                        //Codigo para desplegar en el DATALIST los tipos de usuarios disponibles
                         if(existencia_de_la_conexion()){
                             require_once("../PHP/conexion.php");    //Hacer conexion con la base de datos
                         }
@@ -231,6 +232,70 @@
                     data: $('#form_registrar_producto').serialize(),
                     success: function(res){
                         $('#respuesta4').html(res);
+                    },
+                    error: function(res){
+                        alert("Problemas al tratar de enviar el formulario");
+                    }
+                });
+            });
+        </script>
+    <?PHP
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    function registrar_proveedor(){
+        ?>
+        <form id="form_registrar_proveedor" method="POST">
+            <fieldset>
+            <legend>Agregar nuevo proveedor</legend>
+                <label>Nombre:</label><br>
+                <input type="text" id="registrar_nombre" name="registrar_nombre"><br><br>
+                <label>Dirección:</label><br>
+                <textarea id="registrar_direccion" name="registrar_direccion" rows="4" cols="50"></textarea><br><br>
+                <label>Teléfono:</label><br>
+                <textarea id="registrar_telefono" name="registrar_telefono" rows="4" cols="50"></textarea><br><br>                  
+                <button type="button" id="Enviar5">Registrar</button>
+                <input type="reset" value="Limpiar">
+            </fieldset>
+        </form>
+        <div id="respuesta5"></div>
+        <script>
+            $('#Enviar5').click(function(){
+                $.ajax({
+                    url:'../PHP/consulta5.php',
+                    type:'POST',
+                    data: $('#form_registrar_proveedor').serialize(),
+                    success: function(res){
+                        $('#respuesta5').html(res);
+                    },
+                    error: function(res){
+                        alert("Problemas al tratar de enviar el formulario");
+                    }
+                });
+            });
+        </script>
+    <?PHP
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    function modificar_producto(){
+        ?>
+        <form id="form_modificar_producto" method="POST">
+            <fieldset>
+                <legend>Consulta producto</legend>
+                <input type="text" id="codigo_producto" name="codigo_producto"><br><br>
+                                  
+                <button type="button" id="Enviar6">Consultar</button>
+                <input type="reset" value="Limpiar">
+            </fieldset>
+        </form>
+        <div id="respuesta6"></div>
+        <script>
+            $('#Enviar6').click(function(){
+                $.ajax({
+                    url:'../PHP/consulta6.php',
+                    type:'POST',
+                    data: $('#form_modificar_producto').serialize(),
+                    success: function(res){
+                        $('#respuesta6').html(res);
                     },
                     error: function(res){
                         alert("Problemas al tratar de enviar el formulario");

@@ -47,6 +47,7 @@
     }
     mysqli_free_result($consulta);
 
+    //Si no hay ningun error, continuamos
     if($verificacion[0]==true && $verificacion[1]==true){
         //Proceso INSERT nuevo empleado y su respectivo usuario
         

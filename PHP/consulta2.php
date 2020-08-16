@@ -41,11 +41,11 @@
 
             }elseif ($fila['estado']=='INACTIVO') {
                 //como el documento existe, pasará a inactivarse
-                //INACTIVAR EMPLEADO
+                //ACTIVAR EMPLEADO
                 $consulta = mysqli_query($conexion, "UPDATE `empleado` SET `estado`='ACTIVO' WHERE `identificacion_empleado`='$consultar_identi'") or die ("Error al consultar: comprobación de documento");
                 mysqli_free_result($consulta);
 
-                //INACTIVAR SU CUENTA
+                //ACTIVAR SU CUENTA
                 $consulta = mysqli_query($conexion, "UPDATE `login` SET `estado`='ACTIVO' WHERE `id_login`='$id_login_para_actualizar'") or die ("Error al consultar: comprobación de cuenta");
                 mysqli_free_result($consulta);
                 echo "<br>Activado con éxito <br>";
