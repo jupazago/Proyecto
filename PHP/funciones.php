@@ -1,3 +1,5 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>$.ajaxPrefilter(function( options, originalOptions, jqXHR ) {    options.async = true; });</script>
 <?php
 
     //Funcion que verifica si existeel archivo de conexion de la base de datos
@@ -37,6 +39,7 @@
             if($usuario == $fila['user'] && $clave == $fila['pass']){
                 //Existe en la base de datos y es conrrecto los datos
                 $tipo_de_cuenta = $fila['tipo_de_usuario']; //Obtenemos su tipo de cuenta
+                echo $fila['user'];
                 $encontrado = true;
                 mysqli_free_result($consulta); //Liberar espacio de consulta cuando ya no es necesario
                 mysqli_close($conexion);     //---------------------- Cerrar conexion ------------------
@@ -62,22 +65,21 @@
         ?>
         <div>
         <form id="form_registrar_empleado" method="POST">
-            <fieldset>
-                <legend>Agregar nuevo empleado/administrador:</legend>
+
                 <label>Nombre:</label><br>
-                <input type="text" id="registrar_nombre" name="registrar_nombre"><br><br>
+                <input type="text" id="registrar_nombre" name="registrar_nombre" class="w3-inputs"><br>
                 <label>Identificación:</label><br>
-                <input type="number" id="registrar_identificacion" name="registrar_identificacion"><br><br>
+                <input type="number" id="registrar_identificacion" name="registrar_identificacion" class="w3-inputs"><br>
                 <label>Dirección:</label><br>
-                <input type="text" id="registrar_direccion" name="registrar_direccion"><br><br>
+                <input type="text" id="registrar_direccion" name="registrar_direccion" class="w3-inputs"><br>
                 <label>Teléfono:</label><br>
-                <input type="text" id="registrar_telefono" name="registrar_telefono"><br><br>
+                <input type="text" id="registrar_telefono" name="registrar_telefono" class="w3-inputs"><br>
                 <label>Usuario:</label><br>
-                <input type="text" id="registrar_usuario" name="registrar_usuario"><br><br>
+                <input type="text" id="registrar_usuario" name="registrar_usuario" class="w3-inputs"><br>
                 <label>Clave:</label><br>
-                <input type="text" id="registrar_clave" name="registrar_clave"><br><br>
+                <input type="text" id="registrar_clave" name="registrar_clave" class="w3-inputs"><br>
                 <label>Tipo de Cuenta:</label><br>
-                <input list="tipo_cuenta" name="tipo_cuenta">
+                <input list="tipo_cuenta" name="tipo_cuenta" class="w3-inputs">
                     <datalist id="tipo_cuenta">
                     <?php
                         //Codigo para desplegar en el DATALIST los tipos de usuarios disponibles
@@ -99,9 +101,8 @@
                     ?>
                     </datalist><br><br>
                     
-                <button type="button" id="Enviar">Registrar</button>
-                <input type="reset" value="Limpiar">
-            </fieldset>
+                <button type="button" id="Enviar" class="w3-btn w3-teal">Registrar</button><br><br>
+                <input type="reset" value="Limpiar" class="w3-btn w3-teal">
         </form>
         <div id="respuesta1"></div>
         <script>
@@ -305,4 +306,129 @@
         </script>
     <?PHP
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    function menu_de_ventas(){
+        ?>
+        </script>
+        <form id="form_ventas" method="POST">
+            <fieldset>
+                <legend>Ventas</legend>
+                <input type="text" id="codigo_producto" name="codigo_producto" required><br><br>         
+                <button type="button" id="Enviar7">Consultar</button>
+            </fieldset>
+        </form>
+
+        <form id="form_ventas_2" method="POST">
+            <table border="1" id="tablaprueba"> 
+                <thead>
+                    <tr>
+                        <th>Nombre del producto</th>
+                        <th>Marca</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Precio por cantidad</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan=4>Total</td>
+                        <td colspan=2 class="final"></td>
+                    </tr>
+                </tfoot>
+                <tbody id="tbodyform">
+                <tr style="display:none;">
+                    <td>-</td>
+                    <td></td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="respuesta7">
+                    
+                </tbody>
+            </table>
+        </form>
+
+        <div id="precios_totales"></div>
+
+        <form id="">
+        <label>Cliente:</label><br>
+        <input list="nom_proveedor" name="nom_proveedor">
+            <datalist id="nom_proveedor">
+            <?php
+                if(existencia_de_la_conexion()){
+                    require_once("../PHP/conexion.php");    //Hacer conexion con la base de datos
+                }
+                $conexion = conectar();                     //Obtenemos la conexion
+                
+                //Consulta a la base de datos en la tabla provvedor
+                $consulta = mysqli_query($conexion, "SELECT `nombre_cliente` FROM `cliente` WHERE `estado` = 'ACTIVO' ORDER BY `nombre_cliente` ASC") or die ("Error al consultar: clientes");
+
+                while (($fila = mysqli_fetch_array($consulta))!=NULL){
+                    // traemos los proveedores existentes en la base de datos
+                    $BD_nombre_cliente = $fila['nombre_cliente'];
+                    echo "<option value=".$BD_nombre_cliente."></option>";
+                }
+                mysqli_free_result($consulta); //Liberar espacio de consulta cuando ya no es necesario
+            ?>
+        </form>
+        <script>
+            $('#Enviar7').click(function(){
+                $.ajax({
+                    url:'../PHP/consulta7.php',
+                    type:'POST',
+                    data: $('#form_ventas').serialize(),
+                    success: function(res){
+                        $('#respuesta7').append(res);   //Append para agregar nuevo
+                    },
+                    error: function(res){
+                        alert("Problemas al tratar de enviar el formulario");
+                    }
+                });
+            });
+
+            foco_input();
+        </script>
+<?PHP
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////
+function registrar_cliente(){
+    ?>
+    </script>
+    <form id="form_registrar_cliente" method="POST">
+            <fieldset>
+            <legend>Agregar nuevo Cliente</legend>
+                <label>Nombre:</label><br>
+                <input type="text" id="registrar_nombre" name="registrar_nombre"><br><br>
+                <label>Identificación:</label><br>
+                <input type="text" id="registrar_identificacion" name="registrar_identificacion"><br><br>
+                <label>Dirección:</label><br>
+                <textarea id="registrar_direccion" name="registrar_direccion" rows="4" cols="50"></textarea><br><br>                  
+                <label>Teléfono:</label><br>
+                <textarea id="registrar_telefono" name="registrar_telefono" rows="4" cols="50"></textarea><br><br>                  
+                <button type="button" id="Enviar8">Registrar</button>
+                <input type="reset" value="Limpiar">
+            </fieldset>
+        </form>
+
+    <div id="respuesta8"></div>
+    <script>
+        $('#Enviar8').click(function(){
+            $.ajax({
+                url:'../PHP/consulta8.php',
+                type:'POST',
+                data: $('#form_registrar_cliente').serialize(),
+                success: function(res){
+                    $('#respuesta8').html(res); 
+                },
+                error: function(res){
+                    alert("Problemas al tratar de enviar el formulario");
+                }
+            });
+        });
+    </script>
+<?PHP
+}
 ?>

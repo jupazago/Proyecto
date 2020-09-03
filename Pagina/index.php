@@ -1,27 +1,21 @@
-<?php
-    //Incluir el archivo que contiene las funciones del lenguaje PHP
-    require_once("../PHP/funciones.php");
-
-    //existencia_de_la_conexion();    //Verificamos la funcion
-
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inio de Sesión</title>
+    <title>Inicio de Sesión</title>
     <script type="text/javascript" src="../JavaScript/funciones.js"></script>
+    <LINK REL=StyleSheet HREF="../CSS/estilo_login.css">
 </head>
 <body>
+<div class="login">
     <form name="formulario_iniciar_sesion" action="menu.php" method='post'>
-        <h2>Usuario</h2>
-        <input type="text" name="formulario_usuario" id="formulario_usuario"/>
-        <h2>Clave</h2>
-        <input type="password" name="formulario_clave" id="formulario_clave"/>
+        <h1>Iniciar Sesión</h1>
+        <input type="text" name="u" required placeholder="Usuario"/>
+        <input type="password" name="p" required placeholder="Contraseña"/>
         <br><br>
-        <input type="submit" value="Iniciar Sesión" id="enviar">
+        <input type="submit" class="btn btn-primary btn-block btn-large" value="Iniciar Sesión" id="enviar">
     </form>
+</div>
 </body>
 </html>

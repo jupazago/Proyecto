@@ -29,7 +29,7 @@
             echo "<td>".$fila['identificacion_empleado']."</td>";
             echo "<td>".$fila['user']."</td>";
             echo "<td>".$fila['pass']."</td>";
-            echo "<td>".$fila['tipo_de_usuario']."</td>";
+            echo "<td>".str_replace("_"," ",$fila['tipo_de_usuario'])."</td>";
             echo "<td>".$fila['estado']."</td>";
         ?>
         </tr>
