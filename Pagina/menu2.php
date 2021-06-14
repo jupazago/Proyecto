@@ -61,18 +61,61 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
   <hr>
   <div class="w3-container">
-    <h5>Tablero</h5>
+    <h5></h5>
   </div>
   <div class="w3-bar-block">
     <a class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Cerrar Menú</a>
-    <a class="w3-bar-item w3-button w3-padding" onclick="ocultarDivs('cont1')"><i class="fa fa-eye fa-fw"></i>  Ver</a>
-    <a class="w3-bar-item w3-button w3-padding" onclick="ocultarDivs('cont2')"><i class="fa fa-users fa-fw"></i>  Traffic</a>
-    <a class="w3-bar-item w3-button w3-padding" onclick="ocultarDivs('cont3')"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
-    <a class="w3-bar-item w3-button w3-padding" onclick="ocultarDivs('cont4')"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
-    <a class="w3-bar-item w3-button w3-padding" onclick="ocultarDivs('cont5')"><i class="fa fa-bell fa-fw"></i>  News</a>
-    <a class="w3-bar-item w3-button w3-padding" onclick="ocultarDivs('cont6')"><i class="fa fa-bank fa-fw"></i>  General</a>
-    <a class="w3-bar-item w3-button w3-padding" onclick="ocultarDivs('cont7')"><i class="fa fa-history fa-fw"></i>  History</a>
-    <a class="w3-bar-item w3-button w3-padding" onclick="ocultarDivs('cont8')"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
+    
+ 
+    <div>
+        <button class="w3-button w3-block w3-left-align" onclick="AcordeonBar('contenedor1')">Empleados/admin
+        <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="w3-hide w3-white w3-card" id="contenedor1">
+        <a class="w3-bar-item w3-button w3-hover-teal" onclick="ocultarDivs('cont3')"><i class="fa fa-users fa-fw"></i>  Nuevo empleado</a>
+        <a class="w3-bar-item w3-button w3-hover-teal" onclick="ocultarDivs('cont4')"><i class="fa fa-bank fa-fw"></i>  Activar/Inactivar cuentas</a>
+        <a class="w3-bar-item w3-button w3-hover-teal" onclick="ocultarDivs('cont5')"><i class="fa fa-search fa-fw"></i>  Informacion completa de cuentas</a>
+        </div>
+    </div> 
+
+
+    <div>
+        <button class="w3-button w3-block w3-left-align" onclick="AcordeonBar('contenedor2')">Cliente
+        <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="w3-hide w3-white w3-card" id="contenedor2">
+        <a class="w3-bar-item w3-button w3-hover-teal" onclick="ocultarDivs('cont1')"><i class="fa fa-users fa-fw"></i>  Nuevo cliente</a>
+        </div>
+    </div> 
+
+
+    <div>
+        <button class="w3-button w3-block w3-left-align" onclick="AcordeonBar('contenedor3')">Producto
+        <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="w3-hide w3-white w3-card" id="contenedor3">
+        <a class="w3-bar-item w3-button w3-hover-teal" onclick="ocultarDivs('cont6')"><i class="fa fa-bank fa-fw"></i>  Nuevo producto</a>
+        <a class="w3-bar-item w3-button w3-hover-teal" onclick="ocultarDivs('cont8')"><i class="fa fa-cog fa-fw"></i>  Consultar producto</a>
+        </div>
+    </div> 
+
+
+    <div>
+        <button class="w3-button w3-block w3-left-align" onclick="AcordeonBar('contenedor4')">Proveedor
+        <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="w3-hide w3-white w3-card" id="contenedor4">
+        <a class="w3-bar-item w3-button w3-hover-teal" onclick="ocultarDivs('cont7')"><i class="fa fa-history fa-fw"></i>  Nuevo proveedor</a>
+        </div>
+    </div> 
+   
+    <a class="w3-bar-item w3-button w3-hover-teal" onclick="ocultarDivs('cont2')"><i class="fa fa-users fa-fw"></i>  Ventas</a>
+    
+    
+
+
+    
+<br><br>
   </div>
 </nav>
 
@@ -257,7 +300,6 @@ function ocultarDivs(no_ocultar){
     switch(no_ocultar) {
         case "cont1":
             document.getElementById('cont1').style.display='block'
-            console.log('si')
             break;
         case "cont2":
             document.getElementById('cont2').style.display='block'
@@ -283,5 +325,17 @@ function ocultarDivs(no_ocultar){
         default:
           // code block
       }
+}
+
+function AcordeonBar(opcion) {
+    var x = document.getElementById(opcion);  
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-gray";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className = 
+        x.previousElementSibling.className.replace(" w3-gray", "");
+    }
 }
 </script>
