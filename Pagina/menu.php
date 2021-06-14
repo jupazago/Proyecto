@@ -52,7 +52,8 @@
         <div class="w3-container">
           <div class="w3-card">
             <div class="w3-container">
-              <button onclick="document.getElementById('cont2').style.display='block'" class="w3-button w3-black">Abrir</button>
+              <button onclick="document.getElementById('cont2').style.display='block'" class="w3-button w3-black">
+              edward haragan</button>
               <br>
               <br>
             </div>
@@ -64,7 +65,8 @@
         <div class="w3-container">
           <div class="w3-card">
             <div class="w3-container">
-              <button onclick="document.getElementById('cont3').style.display='block'" class="w3-button w3-black">Abrir</button>
+              <button onclick="document.getElementById('cont3').style.display='block'" class="w3-button w3-black">
+              Abrir</button>
               <br>
               <br>
             </div>
@@ -78,7 +80,8 @@
         <div class="w3-container">
           <div class="w3-card">
             <div class="w3-container">
-              <button onclick="document.getElementById('cont4').style.display='block'" class="w3-button w3-black">Abrir</button>
+              <button onclick="document.getElementById('cont4').style.display='block'" class="w3-button w3-black">
+              Abrir</button>
               <br>
               <br>
             </div>
@@ -90,7 +93,8 @@
         <div class="w3-container">
           <div class="w3-card">
             <div class="w3-container">
-              <button onclick="document.getElementById('cont5').style.display='block'" class="w3-button w3-black">Abrir</button>
+              <button onclick="document.getElementById('cont5').style.display='block'" class="w3-button w3-black">
+              Abrir</button>
               <br>
               <br>
             </div>
@@ -102,7 +106,8 @@
         <div class="w3-container">
           <div class="w3-card">
             <div class="w3-container">
-              <button onclick="document.getElementById('cont6').style.display='block'" class="w3-button w3-black">Abrir</button>
+              <button onclick="document.getElementById('cont6').style.display='block'" class="w3-button w3-black">
+              Abrir</button>
               <br>
               <br>
             </div>
@@ -116,7 +121,8 @@
         <div class="w3-container">
           <div class="w3-card">
             <div class="w3-container">
-              <button onclick="document.getElementById('cont7').style.display='block'" class="w3-button w3-black">Abrir</button>
+              <button onclick="document.getElementById('cont7').style.display='block'" class="w3-button w3-black">
+              Abrir</button>
               <br>
               <br>
             </div>
@@ -128,7 +134,8 @@
         <div class="w3-container">
           <div class="w3-card">
             <div class="w3-container">
-              <button onclick="document.getElementById('cont8').style.display='block'" class="w3-button w3-black">Abrir</button>
+              <button onclick="document.getElementById('cont8').style.display='block'" class="w3-button w3-black">
+              Abrir</button>
               <br>
               <br>
             </div>
@@ -140,7 +147,8 @@
         <div class="w3-container">
           <div class="w3-card">
             <div class="w3-container">
-              <button onclick="document.getElementById('cont9').style.display='block'" class="w3-button w3-black">Abrir</button>
+              <button onclick="document.getElementById('cont9').style.display='block'" class="w3-button w3-black">
+              Abrir</button>
               <br>
               <br>
             </div>
@@ -176,7 +184,7 @@
       </header>
       <div class="w3-container">
         <?php
-          registrar_empleado();
+          registrar_cliente();
         ?>
       </div>
       <div class="w3-container w3-green">
@@ -191,6 +199,9 @@
         <span onclick="document.getElementById('cont2').style.display='none'" class="w3-button w3-display-topright">&times;</span>
         <h2>Mensaje 2</h2>
       </header>
+        <?php
+          menu_de_ventas();
+        ?>
       <div class="w3-container w3-teal">
         <p>...</p>
       </div>
@@ -217,8 +228,6 @@
 </html>
 
 <script>
-   
-
 $('#tbodyform')
 .on('input', '.cantidad', function() {
     

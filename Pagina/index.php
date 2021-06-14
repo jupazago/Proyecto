@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="login">
-    <form name="formulario_iniciar_sesion" action="menu.php" method='post'>
+    <form name="formulario_iniciar_sesion" action="menu2.php" method='post'>
         <h1>Iniciar Sesión</h1>
         <input type="text" name="u" required placeholder="Usuario"/>
         <input type="password" name="p" required placeholder="Contraseña"/>

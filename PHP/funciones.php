@@ -1,5 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>$.ajaxPrefilter(function( options, originalOptions, jqXHR ) {    options.async = true; });</script>
+
 <?php
 
     //Funcion que verifica si existeel archivo de conexion de la base de datos
@@ -65,7 +66,8 @@
         ?>
         <div>
         <form id="form_registrar_empleado" method="POST">
-
+            <fieldset>
+                <legend>Registrar empleado/administrador:</legend>
                 <label>Nombre:</label><br>
                 <input type="text" id="registrar_nombre" name="registrar_nombre" class="w3-inputs"><br>
                 <label>Identificación:</label><br>
@@ -103,6 +105,7 @@
                     
                 <button type="button" id="Enviar" class="w3-btn w3-teal">Registrar</button><br><br>
                 <input type="reset" value="Limpiar" class="w3-btn w3-teal">
+            </fieldset>
         </form>
         <div id="respuesta1"></div>
         <script>
@@ -133,9 +136,9 @@
             <fieldset>
                 <legend>Activar o Inactivar cuenta del empleado/administrador:</legend>
                 <label>Identificación:</label><br>
-                <input type="text" id="consultar_identificacion" name="consultar_identificacion"><br><br>
-                <button type="button" id="Enviar2">Continuar</button>
-                <input type="reset" value="Limpiar">
+                <input type="text" id="consultar_identificacion" name="consultar_identificacion"  class="w3-inputs"><br><br>
+                <button type="button" id="Enviar2" class="w3-btn w3-teal">Continuar</button><br><br>
+                <input type="reset" value="Limpiar" class="w3-btn w3-teal">
             </fieldset>
         </form>
         <div id="respuesta2"></div>
@@ -163,7 +166,7 @@
         <form id="form_ver_empleados" method="POST">
             <fieldset>
                 <legend>Información completa de cuentas</legend>
-                <button type="button" id="Enviar3">Ver Información</button>
+                <button type="button" id="Enviar3" class="w3-btn w3-teal">Ver Información</button>
             </fieldset>
         </form>
         <div id="respuesta3"></div>
@@ -192,15 +195,15 @@
             <fieldset>
             <legend>Registrar producto</legend>
                 <label>Código:</label><br>
-                <input type="text" id="registrar_codigo" name="registrar_codigo"><br><br>
+                <input type="text" id="registrar_codigo" name="registrar_codigo" class="w3-inputs"><br><br>
                 <label>Nombre:</label><br>
-                <input type="text" id="registrar_nombre" name="registrar_nombre"><br><br>
+                <input type="text" id="registrar_nombre" name="registrar_nombre" class="w3-inputs"><br><br>
                 <label>Precio:</label><br>
-                <input type="number" id="registrar_precio" name="registrar_precio"><br><br>
+                <input type="number" id="registrar_precio" name="registrar_precio" class="w3-inputs"><br><br>
                 <label>Descripción:</label><br>
-                <textarea id="registrar_descripcion" name="registrar_descripcion" rows="4" cols="50"></textarea><br><br>
+                <textarea id="registrar_descripcion" name="registrar_descripcion" rows="4" cols="50" class="w3-inputs"></textarea><br><br>
                 <label>Proveedor:</label><br>
-                <input list="nom_proveedor" name="nom_proveedor">
+                <input list="nom_proveedor" name="nom_proveedor"  class="w3-inputs">
                     <datalist id="nom_proveedor">
                     <?php
                         if(existencia_de_la_conexion()){
@@ -220,8 +223,8 @@
                     ?>
                     </datalist><br><br>
                     
-                <button type="button" id="Enviar4">Registrar</button>
-                <input type="reset" value="Limpiar">
+                <button type="button" id="Enviar4" class="w3-btn w3-teal">Registrar</button><br><br>
+                <input type="reset" value="Limpiar" class="w3-btn w3-teal">
             </fieldset>
         </form>
         <div id="respuesta4"></div>
@@ -249,13 +252,13 @@
             <fieldset>
             <legend>Agregar nuevo proveedor</legend>
                 <label>Nombre:</label><br>
-                <input type="text" id="registrar_nombre" name="registrar_nombre"><br><br>
+                <input type="text" id="registrar_nombre" name="registrar_nombre" class="w3-inputs"><br><br>
                 <label>Dirección:</label><br>
-                <textarea id="registrar_direccion" name="registrar_direccion" rows="4" cols="50"></textarea><br><br>
+                <textarea id="registrar_direccion" name="registrar_direccion" rows="4" cols="50" class="w3-inputs"></textarea><br><br>
                 <label>Teléfono:</label><br>
-                <textarea id="registrar_telefono" name="registrar_telefono" rows="4" cols="50"></textarea><br><br>                  
-                <button type="button" id="Enviar5">Registrar</button>
-                <input type="reset" value="Limpiar">
+                <textarea id="registrar_telefono" name="registrar_telefono" rows="4" cols="50" class="w3-inputs"></textarea><br><br>                  
+                <button type="button" id="Enviar5" class="w3-btn w3-teal">Registrar</button><br><br>
+                <input type="reset" value="Limpiar" class="w3-btn w3-teal">
             </fieldset>
         </form>
         <div id="respuesta5"></div>
@@ -282,10 +285,10 @@
         <form id="form_modificar_producto" method="POST">
             <fieldset>
                 <legend>Consulta producto</legend>
-                <input type="text" id="codigo_producto" name="codigo_producto"><br><br>
+                <input type="text" id="codigo_producto" name="codigo_producto" class="w3-inputs"><br><br>
                                   
-                <button type="button" id="Enviar6">Consultar</button>
-                <input type="reset" value="Limpiar">
+                <button type="button" id="Enviar6" class="w3-btn w3-teal">Consultar</button><br><br>
+                <input type="reset" value="Limpiar" class="w3-btn w3-teal">
             </fieldset>
         </form>
         <div id="respuesta6"></div>
@@ -313,8 +316,8 @@
         <form id="form_ventas" method="POST">
             <fieldset>
                 <legend>Ventas</legend>
-                <input type="text" id="codigo_producto" name="codigo_producto" required><br><br>         
-                <button type="button" id="Enviar7">Consultar</button>
+                <input type="text" id="codigo_producto" name="codigo_producto" required class="w3-inputs"><br><br>         
+                <button type="button" id="Enviar7" class="w3-btn w3-teal">Consultar</button>
             </fieldset>
         </form>
 
@@ -355,7 +358,7 @@
 
         <form id="">
         <label>Cliente:</label><br>
-        <input list="nom_proveedor" name="nom_proveedor">
+        <input list="nom_proveedor" name="nom_proveedor" class="w3-inputs">
             <datalist id="nom_proveedor">
             <?php
                 if(existencia_de_la_conexion()){
@@ -401,15 +404,15 @@ function registrar_cliente(){
             <fieldset>
             <legend>Agregar nuevo Cliente</legend>
                 <label>Nombre:</label><br>
-                <input type="text" id="registrar_nombre" name="registrar_nombre"><br><br>
+                <input type="text" id="registrar_nombre" name="registrar_nombre" class="w3-inputs"><br><br>
                 <label>Identificación:</label><br>
-                <input type="text" id="registrar_identificacion" name="registrar_identificacion"><br><br>
+                <input type="text" id="registrar_identificacion" name="registrar_identificacion" class="w3-inputs"><br><br>
                 <label>Dirección:</label><br>
-                <textarea id="registrar_direccion" name="registrar_direccion" rows="4" cols="50"></textarea><br><br>                  
+                <textarea id="registrar_direccion" name="registrar_direccion" rows="4" cols="50" class="w3-inputs"></textarea><br><br>                  
                 <label>Teléfono:</label><br>
-                <textarea id="registrar_telefono" name="registrar_telefono" rows="4" cols="50"></textarea><br><br>                  
-                <button type="button" id="Enviar8">Registrar</button>
-                <input type="reset" value="Limpiar">
+                <textarea id="registrar_telefono" name="registrar_telefono" rows="4" cols="50" class="w3-inputs"></textarea><br><br>                  
+                <button type="button" id="Enviar8" class="w3-btn w3-teal">Registrar</button><br><br>
+                <input type="reset" value="Limpiar" class="w3-btn w3-teal">
             </fieldset>
         </form>
 

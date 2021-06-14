@@ -16,6 +16,52 @@ $(function () {
     });
 });
 
+function ocultarDivs(no_ocultar){
+    document.getElementById('cont1').style.display='none'
+    document.getElementById('cont2').style.display='none'
+    document.getElementById('cont3').style.display='none'
+    document.getElementById('cont4').style.display='none'
+    document.getElementById('cont5').style.display='none'
+    document.getElementById('cont6').style.display='none'
+    document.getElementById('cont7').style.display='none'
+    document.getElementById('cont8').style.display='none'
+
+    switch(no_ocultar) {
+        case "cont1":
+            document.getElementById('cont1').style.display='block'
+            console.log('si')
+            break;
+        case "cont2":
+            document.getElementById('cont2').style.display='block'
+            break;
+        case "cont3":
+            document.getElementById('cont3').style.display='block'
+            break;
+        case "cont4":
+            document.getElementById('cont4').style.display='block'
+            break;
+        case "cont5":
+            document.getElementById('cont5').style.display='block'
+            break;
+        case "cont6":
+            document.getElementById('cont6').style.display='block'
+            break;
+        case "cont7":
+            document.getElementById('cont7').style.display='block'
+            break;
+        case "cont8":
+            document.getElementById('cont8').style.display='block'
+            break;
+        default:
+          // code block
+      }
+}
+
+
+
+
+
+
  /*
 //funcion que realiza los calculos
 function multi() {
