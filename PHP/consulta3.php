@@ -11,7 +11,7 @@
     $consulta = mysqli_query($conexion, "SELECT `nombre_empleado`,`identificacion_empleado`,`user`,`pass`,`tipo_de_usuario`,empleado.estado FROM `empleado` INNER JOIN `login` ON empleado.id_login1=login.id_login INNER JOIN tipo_usuario ON login.id_tipo_usuario1=tipo_usuario.id_tipo_usuario") or die ("Error al consultar: datos de empleados");
     
     ?>
-    <table>
+    <table width="100%">
         <tr>
             <th>Nombre</th>
             <th>Idenficiación</th>

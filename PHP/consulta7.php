@@ -22,16 +22,16 @@ foco_input();
         $consult_nombre_prove= $fila['nombre_proveedor'];
         $consult_precio_produ = $fila['precio_producto'];
     
-?>  </tr><table border="1" id="tablaprueba"> 
+?>  </tr><table border="0" id="tablaprueba" width="100%"> 
     <tbody id="tbodyform">
-    <tr>
-        <td><?php echo ucwords($consult_nombre_produ) ?></td>
-        <td><?php echo $consult_nombre_prove ?></td>
-        <td><span class="precio"><?php echo $consult_precio_produ ?></span></td>
-        <td><input type="number" class="cantidad" value="1" min="1"/></td>
-        <td class="total"><span class="total"><?php echo $consult_precio_produ ?></span></td>
-        <td><input type="button" class="borrar" value=" X "></input></td>
-    </tr>
+    
+        <td width="25%"><?php echo ucwords($consult_nombre_produ) ?></td>
+        <td width="15%"><?php echo $consult_nombre_prove ?></td>
+        <td width="15%"> $<span class="precio">   <?php echo $consult_precio_produ ?></span></td>
+        <td width="5%"><input type="number" class="cantidad" value="1" min="1"/></td>
+        <td width="20%" class="total"><span class="total"><?php echo $consult_precio_produ ?></span></td>
+        <td width="20%"><input type="button" class="borrar" value=" X " style="background-color: #f44336;"></input></td>
+    
     </tbody>
     </table>
     <?PHP

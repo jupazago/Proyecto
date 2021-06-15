@@ -322,34 +322,22 @@
         </form>
 
         <form id="form_ventas_2" method="POST">
-            <table border="1" id="tablaprueba"> 
+            <table border="1" id="tablaprueba" width="100%"> 
                 <thead>
                     <tr>
-                        <th>Nombre del producto</th>
-                        <th>Marca</th>
-                        <th>Precio</th>
-                        <th>Cantidad</th>
-                        <th>Precio por cantidad</th>
-                        <th>Eliminar</th>
+                        <th>Tabla</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <td colspan=4>Total</td>
-                        <td colspan=2 class="final"></td>
+                        <td>Total</td>
+                        <td class="final"></td>
                     </tr>
                 </tfoot>
                 <tbody id="tbodyform">
-                <tr style="display:none;">
-                    <td>-</td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                </tr>
                 <tr id="respuesta7">
                     
+                </tr>
                 </tbody>
             </table>
         </form>
