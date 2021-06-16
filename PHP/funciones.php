@@ -103,8 +103,8 @@
                     ?>
                     </datalist><br><br>
                     
-                <button type="button" id="Enviar" class="w3-btn w3-teal">Registrar</button><br><br>
-                <input type="reset" value="Limpiar" class="w3-btn w3-teal">
+                <button type="button" id="Enviar" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='block'">Registrar</button><br><br>
+                <input type="reset" value="Limpiar" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='none'">
             </fieldset>
         </form>
         <div id="respuesta1"></div>
@@ -137,8 +137,8 @@
                 <legend>Activar o Inactivar cuenta del empleado/administrador:</legend>
                 <label>Identificación:</label><br>
                 <input type="text" id="consultar_identificacion" name="consultar_identificacion"  class="w3-inputs"><br><br>
-                <button type="button" id="Enviar2" class="w3-btn w3-teal">Continuar</button><br><br>
-                <input type="reset" value="Limpiar" class="w3-btn w3-teal">
+                <button type="button" id="Enviar2" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='block'">Continuar</button><br><br>
+                <input type="reset" value="Limpiar" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='none'">
             </fieldset>
         </form>
         <div id="respuesta2"></div>
@@ -223,8 +223,8 @@
                     ?>
                     </datalist><br><br>
                     
-                <button type="button" id="Enviar4" class="w3-btn w3-teal">Registrar</button><br><br>
-                <input type="reset" value="Limpiar" class="w3-btn w3-teal">
+                <button type="button" id="Enviar4" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='block'">Registrar</button><br><br>
+                <input type="reset" value="Limpiar" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='none'">
             </fieldset>
         </form>
         <div id="respuesta4"></div>
@@ -257,8 +257,8 @@
                 <textarea id="registrar_direccion" name="registrar_direccion" rows="4" cols="50" class="w3-inputs"></textarea><br><br>
                 <label>Teléfono:</label><br>
                 <textarea id="registrar_telefono" name="registrar_telefono" rows="4" cols="50" class="w3-inputs"></textarea><br><br>                  
-                <button type="button" id="Enviar5" class="w3-btn w3-teal">Registrar</button><br><br>
-                <input type="reset" value="Limpiar" class="w3-btn w3-teal">
+                <button type="button" id="Enviar5" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='block'">Registrar</button><br><br>
+                <input type="reset" value="Limpiar" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='none'">
             </fieldset>
         </form>
         <div id="respuesta5"></div>
@@ -284,11 +284,12 @@
         ?>
         <form id="form_modificar_producto" method="POST">
             <fieldset>
-                <legend>Consulta producto</legend>
+                <legend>Producto a modificar</legend>
+                <label>Código:</label><br>
                 <input type="text" id="codigo_producto" name="codigo_producto" class="w3-inputs"><br><br>
                                   
-                <button type="button" id="Enviar6" class="w3-btn w3-teal">Consultar</button><br><br>
-                <input type="reset" value="Limpiar" class="w3-btn w3-teal">
+                <button type="button" id="Enviar6" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='block'">Consultar</button><br><br>
+                <input type="reset" value="Limpiar" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='none'">
             </fieldset>
         </form>
         <div id="respuesta6"></div>
@@ -344,7 +345,7 @@
 
         <div id="precios_totales"></div>
 
-        <form id="">
+        <form id="generar_factura">
         <label>Cliente:</label><br>
         <input list="nom_proveedor" name="nom_proveedor" class="w3-inputs">
             <datalist id="nom_proveedor">
@@ -355,7 +356,7 @@
                 $conexion = conectar();                     //Obtenemos la conexion
                 
                 //Consulta a la base de datos en la tabla provvedor
-                $consulta = mysqli_query($conexion, "SELECT `nombre_cliente` FROM `cliente` WHERE `estado` = 'ACTIVO' ORDER BY `nombre_cliente` ASC") or die ("Error al consultar: clientes");
+                $consulta = mysqli_query($conexion, "SELECT `nombre_cliente` FROM `cliente` ORDER BY `nombre_cliente` ASC") or die ("Error al consultar: proveedores");
 
                 while (($fila = mysqli_fetch_array($consulta))!=NULL){
                     // traemos los proveedores existentes en la base de datos
@@ -364,6 +365,8 @@
                 }
                 mysqli_free_result($consulta); //Liberar espacio de consulta cuando ya no es necesario
             ?>
+            </datalist><br><br>
+
         </form>
         <script>
             $('#Enviar7').click(function(){
@@ -399,8 +402,8 @@ function registrar_cliente(){
                 <textarea id="registrar_direccion" name="registrar_direccion" rows="4" cols="50" class="w3-inputs"></textarea><br><br>                  
                 <label>Teléfono:</label><br>
                 <textarea id="registrar_telefono" name="registrar_telefono" rows="4" cols="50" class="w3-inputs"></textarea><br><br>                  
-                <button type="button" id="Enviar8" class="w3-btn w3-teal">Registrar</button><br><br>
-                <input type="reset" value="Limpiar" class="w3-btn w3-teal">
+                <button type="button" id="Enviar8" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='block'">Registrar</button><br><br>
+                <input type="reset" value="Limpiar" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='none'">
             </fieldset>
         </form>
 
@@ -422,4 +425,303 @@ function registrar_cliente(){
     </script>
 <?PHP
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////
+function modificar_datos_empleado(){
+    ?>
+        <form id="form_modificar_empleado" method="POST">
+            <fieldset>
+                <legend>Consulta datos</legend>
+                <label>Identificación:</label><br>
+                <input type="text" id="identi_empleado" name="identi_empleado" class="w3-inputs"><br><br>
+                                  
+                <button type="button" id="Enviar9" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='block'">Consultar</button><br><br>
+                <input type="reset" value="Limpiar" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='none'">
+            </fieldset>
+        </form>
+        <div id="respuesta9"></div>
+        <script>
+            $('#Enviar9').click(function(){
+                $.ajax({
+                    url:'../PHP/consulta9.php',
+                    type:'POST',
+                    data: $('#form_modificar_empleado').serialize(),
+                    success: function(res){
+                        $('#respuesta9').html(res);
+                    },
+                    error: function(res){
+                        alert("Problemas al tratar de enviar el formulario");
+                    }
+                });
+            });
+        </script>
+<?PHP
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+function modificar_pass_empleado(){
+    ?>
+        <form id="form_modificarpass_empleado" method="POST">
+            <fieldset>
+                <legend>Cambio de Contraseña</legend>
+                <label>Identificación:</label><br>
+                <input type="text" id="identi_empleado" name="identi_empleado" class="w3-inputs"><br><br>
+                                  
+                <button type="button" id="Enviar10" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='block'">Consultar</button><br><br>
+                <input type="reset" value="Limpiar" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='none'">
+            </fieldset>
+        </form>
+        <div id="respuesta10"></div>
+        <script>
+            $('#Enviar10').click(function(){
+                $.ajax({
+                    url:'../PHP/consulta10.php',
+                    type:'POST',
+                    data: $('#form_modificarpass_empleado').serialize(),
+                    success: function(res){
+                        $('#respuesta10').html(res);
+                    },
+                    error: function(res){
+                        alert("Problemas al tratar de enviar el formulario");
+                    }
+                });
+            });
+        </script>
+    <?PHP
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+function consultar_producto(){
+    ?>
+        <form id="form_consultar_producto" method="POST">
+            <fieldset>
+                <legend>Consulta producto</legend>
+                <label>Código:</label><br>
+                <input type="text" id="codigo_producto" name="codigo_producto" class="w3-inputs"><br><br>
+                                  
+                <button type="button" id="Enviar11" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='block'">Consultar</button><br><br>
+                <input type="reset" value="Limpiar" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='none'">
+            </fieldset>
+        </form>
+        <div id="respuesta11"></div>
+        <script>
+            $('#Enviar11').click(function(){
+                $.ajax({
+                    url:'../PHP/consulta11.php',
+                    type:'POST',
+                    data: $('#form_consultar_producto').serialize(),
+                    success: function(res){
+                        $('#respuesta11').html(res);
+                    },
+                    error: function(res){
+                        alert("Problemas al tratar de enviar el formulario");
+                    }
+                });
+            });
+        </script>
+    <?PHP
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+function consultar_proveedor(){
+    ?>
+        <form id="form_consultar_proveedor" method="POST">
+            <fieldset>
+                <legend>Consulta Proveedor</legend>
+                <label>Nombre:</label><br>
+                <input list="nombre_proveedor1" name="nombre_proveedor1" class="w3-inputs">
+                <datalist id="nombre_proveedor1">
+                    <?php
+                        if(existencia_de_la_conexion()){
+                            require_once("../PHP/conexion.php");    //Hacer conexion con la base de datos
+                        }
+                        $conexion = conectar();                     //Obtenemos la conexion
+                        
+                        //Consulta a la base de datos en la tabla provvedor
+                        $consulta = mysqli_query($conexion, "SELECT `nombre_proveedor` FROM `proveedor` ORDER BY `nombre_proveedor` ASC") or die ("Error al consultar: proveedores");
+
+                        while (($fila = mysqli_fetch_array($consulta))!=NULL){
+                            // traemos los proveedores existentes en la base de datos
+                            $BD_nombre_proveedor = $fila['nombre_proveedor'];
+                            echo "<option value=".$BD_nombre_proveedor."></option>";
+                        }
+                        mysqli_free_result($consulta); //Liberar espacio de consulta cuando ya no es necesario
+                    ?>
+                    </datalist><br><br>
+                                  
+                <button type="button" id="Enviar12" class="w3-btn w3-teal" onclick="document.getElementById('respuesta12').style.display='block'">Consultar</button><br><br>
+                <input type="reset" value="Limpiar" class="w3-btn w3-teal" onclick="document.getElementById('respuesta12').style.display='none'">
+            </fieldset>
+        </form>
+        <div id="respuesta12"></div>
+        <script>
+            $('#Enviar12').click(function(){
+                $.ajax({
+                    url:'../PHP/consulta12.php',
+                    type:'POST',
+                    data: $('#form_consultar_proveedor').serialize(),
+                    success: function(res){
+                        $('#respuesta12').html(res);
+                    },
+                    error: function(res){
+                        alert("Problemas al tratar de enviar el formulario");
+                    }
+                });
+            });
+        </script>
+    <?PHP
+}
+?>
+
+
+<?PHP
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+function modificar_proveedor(){
+    ?>
+        <form id="form_modificar_proveedor" method="POST">
+            <fieldset>
+                <legend>Proveedor a modificar</legend>
+                <label>Nombre:</label><br>
+                <input list="nombre_proveedor1" name="nombre_proveedor1" class="w3-inputs">
+                <datalist id="nombre_proveedor1">
+                    <?php
+                        if(existencia_de_la_conexion()){
+                            require_once("../PHP/conexion.php");    //Hacer conexion con la base de datos
+                        }
+                        $conexion = conectar();                     //Obtenemos la conexion
+                        
+                        //Consulta a la base de datos en la tabla provvedor
+                        $consulta = mysqli_query($conexion, "SELECT `nombre_proveedor` FROM `proveedor` ORDER BY `nombre_proveedor` ASC") or die ("Error al consultar: proveedores");
+
+                        while (($fila = mysqli_fetch_array($consulta))!=NULL){
+                            // traemos los proveedores existentes en la base de datos
+                            $BD_nombre_proveedor = $fila['nombre_proveedor'];
+                            echo "<option value=".$BD_nombre_proveedor."></option>";
+                        }
+                        mysqli_free_result($consulta); //Liberar espacio de consulta cuando ya no es necesario
+                    ?>
+                    </datalist><br><br>
+                                  
+                <button type="button" id="Enviar13" class="w3-btn w3-teal" onclick="document.getElementById('respuesta13').style.display='block'">Consultar</button><br><br>
+                <input type="reset" value="Limpiar" class="w3-btn w3-teal" onclick="document.getElementById('respuesta13').style.display='none'">
+            </fieldset>
+        </form>
+        <div id="respuesta13"></div>
+        <script>
+            $('#Enviar13').click(function(){
+                $.ajax({
+                    url:'../PHP/consulta13.php',
+                    type:'POST',
+                    data: $('#form_modificar_proveedor').serialize(),
+                    success: function(res){
+                        $('#respuesta13').html(res);
+                    },
+                    error: function(res){
+                        alert("Problemas al tratar de enviar el formulario");
+                    }
+                });
+            });
+        </script>
+<?PHP
+        }
+?>
+
+<?PHP
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+function consultar_cliente(){
+    ?>
+        <form id="form_consultar_cliente" method="POST">
+            <fieldset>
+                <legend>Consulta Proveedor</legend>
+                <label>Nombre:</label><br>
+                <input list="nombre_cliente1" name="nombre_cliente1" class="w3-inputs">
+                <datalist id="nombre_cliente1">
+                    <?php
+                        if(existencia_de_la_conexion()){
+                            require_once("../PHP/conexion.php");    //Hacer conexion con la base de datos
+                        }
+                        $conexion = conectar();                     //Obtenemos la conexion
+                        
+                        //Consulta a la base de datos en la tabla provvedor
+                        $consulta = mysqli_query($conexion, "SELECT `nombre_cliente` FROM `cliente` ORDER BY `nombre_cliente` ASC") or die ("Error al consultar: proveedores");
+
+                        while (($fila = mysqli_fetch_array($consulta))!=NULL){
+                            // traemos los proveedores existentes en la base de datos
+                            $BD_nombre_cliente = $fila['nombre_cliente'];
+                            echo "<option value=".$BD_nombre_cliente."></option>";
+                        }
+                        mysqli_free_result($consulta); //Liberar espacio de consulta cuando ya no es necesario
+                    ?>
+                    </datalist><br><br>
+                                  
+                <button type="button" id="Enviar14" class="w3-btn w3-teal" onclick="document.getElementById('respuesta14').style.display='block'">Consultar</button><br><br>
+                <input type="reset" value="Limpiar" class="w3-btn w3-teal" onclick="document.getElementById('respuesta14').style.display='none'">
+            </fieldset>
+        </form>
+        <div id="respuesta14"></div>
+        <script>
+            $('#Enviar14').click(function(){
+                $.ajax({
+                    url:'../PHP/consulta14.php',
+                    type:'POST',
+                    data: $('#form_consultar_cliente').serialize(),
+                    success: function(res){
+                        $('#respuesta14').html(res);
+                    },
+                    error: function(res){
+                        alert("Problemas al tratar de enviar el formulario");
+                    }
+                });
+            });
+        </script>
+<?PHP
+        }
+?>
+
+<?PHP
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+function modificar_cliente(){
+    ?>
+        <form id="form_modificar_cliente" method="POST">
+            <fieldset>
+                <legend>Proveedor a modificar</legend>
+                <label>Nombre:</label><br>
+                <input list="nombre_cliente1" name="nombre_cliente1" class="w3-inputs">
+                <datalist id="nombre_cliente1">
+                    <?php
+                        if(existencia_de_la_conexion()){
+                            require_once("../PHP/conexion.php");    //Hacer conexion con la base de datos
+                        }
+                        $conexion = conectar();                     //Obtenemos la conexion
+                        
+                        //Consulta a la base de datos en la tabla provvedor
+                        $consulta = mysqli_query($conexion, "SELECT `nombre_cliente` FROM `cliente` ORDER BY `nombre_cliente` ASC") or die ("Error al consultar: proveedores");
+
+                        while (($fila = mysqli_fetch_array($consulta))!=NULL){
+                            // traemos los proveedores existentes en la base de datos
+                            $BD_nombre_cliente = $fila['nombre_cliente'];
+                            echo "<option value=".$BD_nombre_cliente."></option>";
+                        }
+                        mysqli_free_result($consulta); //Liberar espacio de consulta cuando ya no es necesario
+                    ?>
+                    </datalist><br><br>
+                                  
+                <button type="button" id="Enviar15" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='block'">Consultar</button><br><br>
+                <input type="reset" value="Limpiar" class="w3-btn w3-teal" onclick="document.getElementById('respuesta15').style.display='none'">
+            </fieldset>
+        </form>
+        <div id="respuesta15"></div>
+        <script>
+            $('#Enviar15').click(function(){
+                $.ajax({
+                    url:'../PHP/consulta15.php',
+                    type:'POST',
+                    data: $('#form_modificar_cliente').serialize(),
+                    success: function(res){
+                        $('#respuesta15').html(res);
+                    },
+                    error: function(res){
+                        alert("Problemas al tratar de enviar el formulario");
+                    }
+                });
+            });
+        </script>
+<?PHP
+        }
 ?>

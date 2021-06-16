@@ -164,7 +164,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <div id="cont14" style="display:none;">
         <div class="w3-container">
             <?php
-                //modificar datos
+                modificar_datos_empleado();
             ?>
         </div>
     </div>
@@ -172,7 +172,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <div id="cont15" style="display:none;">
         <div class="w3-container">
             <?php
-                //Cambiar contraseña
+                modificar_pass_empleado();
             ?>
         </div>
     </div>
@@ -189,25 +189,17 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <div id="cont22" style="display:none;">
         <div class="w3-container">
             <?php
-                //modificar
+                modificar_cliente();
             ?>
         </div>
     </div>
     <div id="cont23" style="display:none;">
         <div class="w3-container">
             <?php
-                //consultar
+                consultar_cliente();
             ?>
         </div>
     </div>
-
-
-
-
-
-
-
-
 
     <?php //------------------------------------------------------- ?>
 
@@ -222,7 +214,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <div id="cont32" style="display:none;">
         <div class="w3-container">
             <?php
-                //consultar
+                consultar_producto();
             ?>
         </div>
     </div>
@@ -251,30 +243,17 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <div id="cont42" style="display:none;">
         <div class="w3-container">
             <?php
-                //consultar
+                consultar_proveedor();
             ?>
         </div>
     </div>
     <div id="cont43" style="display:none;">
         <div class="w3-container">
             <?php
-                //actualizar
+                modificar_proveedor();
             ?>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <?php //------------------------------------------------------- ?>
 
@@ -298,26 +277,15 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
     
 </div>
-
-  
-
-  
-  <!-- Footer -->
   <footer class="w3-container w3-padding-16 w3-light-grey">
     <p>Powered by <u>Jupazago</u></p>
   </footer>
-
-  <!-- End page content -->
 </div>
 
 <script>
-// Get the Sidebar
+
 var mySidebar = document.getElementById("mySidebar");
-
-// Get the DIV with overlay effect
 var overlayBg = document.getElementById("myOverlay");
-
-// Toggle between showing and hiding the sidebar, and add overlay effect
 function w3_open() {
   if (mySidebar.style.display === 'block') {
     mySidebar.style.display = 'none';
@@ -328,7 +296,7 @@ function w3_open() {
   }
 }
 
-// Close the sidebar with the close button
+
 function w3_close() {
   mySidebar.style.display = "none";
   overlayBg.style.display = "none";

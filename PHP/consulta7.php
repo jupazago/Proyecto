@@ -18,18 +18,14 @@ foco_input();
     $consulta = mysqli_query($conexion, "SELECT `nombre_producto`,`precio_producto`, proveedor.nombre_proveedor FROM `producto` INNER JOIN proveedor ON proveedor.id_proveedor=producto.id_proveedor1 WHERE `cod_producto`='$consult_codigo_produ'") or die ("Error al consultar: datos de  producto");
     //Capturamos los datos
     while (($fila = mysqli_fetch_array($consulta))!=NULL) {
-        $consult_nombre_produ = $fila['nombre_producto'];
-        $consult_nombre_prove= $fila['nombre_proveedor'];
-        $consult_precio_produ = $fila['precio_producto'];
-    
 ?>  </tr><table border="0" id="tablaprueba" width="100%"> 
     <tbody id="tbodyform">
     
-        <td width="25%"><?php echo ucwords($consult_nombre_produ) ?></td>
-        <td width="15%"><?php echo $consult_nombre_prove ?></td>
-        <td width="15%"> $<span class="precio">   <?php echo $consult_precio_produ ?></span></td>
+        <td width="25%"><?php echo ucwords($fila['nombre_producto']) ?></td>
+        <td width="15%"><?php echo $fila['nombre_proveedor'] ?></td>
+        <td width="15%"> $<span class="precio">   <?php echo $fila['precio_producto'] ?></span></td>
         <td width="5%"><input type="number" class="cantidad" value="1" min="1"/></td>
-        <td width="20%" class="total"><span class="total"><?php echo $consult_precio_produ ?></span></td>
+        <td width="20%" class="total"><span class="total"><?php echo $fila['precio_producto'] ?></span></td>
         <td width="20%"><input type="button" class="borrar" value=" X " style="background-color: #f44336;"></input></td>
     
     </tbody>
