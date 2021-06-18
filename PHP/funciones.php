@@ -1,5 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>$.ajaxPrefilter(function( options, originalOptions, jqXHR ) {    options.async = true; });</script>
+<script type="text/javascript" src="../JavaScript/funciones.js"></script>
 
 <?php
 
@@ -324,7 +325,7 @@
 
         <form id="form_ventas_2" method="POST">
             <table border="1" id="tablaprueba" width="100%"> 
-                <thead>
+                <thead width="100%">
                     <tr>
                         <th>Tabla</th>
                     </tr>
@@ -368,6 +369,7 @@
             </datalist><br><br>
 
         </form>
+        <button class="w3-btn w3-green" onclick="obtener_detalles_factura()">Generar factura</button>
         <script>
             $('#Enviar7').click(function(){
                 $.ajax({

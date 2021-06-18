@@ -56,7 +56,39 @@ function ocultarDivs(no_ocultar){
           // code block
       }
 }
+function obtener_detalles_factura() {
+    var nombres = []
 
+    $("td.names").each(function(){
+        nombres.push($(this).text());
+    });
+
+    ///////////////////////   
+    var precios = []
+
+    $("td.precios").each(function(){
+        precios.push(parseFloat($(this).text()));
+    });
+    ///////////////////////
+
+    var cantidad = []
+
+    
+    $("td.total").each(function(){
+
+
+        for(var i=0; i<precios.length; i++){
+            var unidades = parseFloat($(this).text()) / precios[i];
+        }
+        cantidad.push(unidades);
+    });
+
+
+
+    console.log(nombres);
+    console.log(precios);
+    console.log(cantidad);
+}
 
 
 

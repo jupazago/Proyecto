@@ -312,7 +312,7 @@ $('#tbodyform')
     
     var $input = $(this), // input.cantidad
         cantidad = parseInt($input.val(), 10), // valor de input.cantidad
-        $tr = $input.closest('tr'), // fila del input.canitdad
+        $tr = $input.closest('tr'), // fila del input.cantidad
         precio = parseInt($tr.find('.precio').text(), 10), // valor del span.precio
         $total = $tr.find('.total'); // elemento span.total
     
@@ -321,11 +321,12 @@ $('#tbodyform')
 
 setInterval('multi()',500);
 
+
 function multi() {
     var data = [];
 
     $("td.total").each(function(){
-    data.push(parseFloat($(this).text()));
+        data.push(parseFloat($(this).text()));
     });
 
 
@@ -334,6 +335,7 @@ function multi() {
     console.log(suma);
     $('.final').html(suma);
 }
+
 
 function ocultarDivs(no_ocultar){
     document.getElementById('cont11').style.display='none'
