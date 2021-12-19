@@ -162,7 +162,6 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `id_producto` int(11) NOT NULL AUTO_INCREMENT,
   `cod_producto` bigint(20) NOT NULL,
   `nombre_producto` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `id_categoria1` int(11) DEFAULT NULL,
   `descripcion` text COLLATE utf8_spanish_ci NOT NULL,
   `precio_producto` int(11) NOT NULL,
   `id_proveedor1` int(11) NOT NULL,
@@ -175,9 +174,9 @@ CREATE TABLE IF NOT EXISTS `producto` (
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`id_producto`, `cod_producto`, `nombre_producto`, `id_categoria1`, `descripcion`, `precio_producto`, `id_proveedor1`, `estado`) VALUES
-(1, 6970301340065, 'bombillo luminoso', NULL, 'luminosito xd', 6000, 4, 'ACTIVO'),
-(2, 47400097742, 'Desodorante 107g', NULL, 'Sport Triumph', 12500, 5, 'ACTIVO');
+INSERT INTO `producto` (`id_producto`, `cod_producto`, `nombre_producto`, `descripcion`, `precio_producto`, `id_proveedor1`, `estado`) VALUES
+(1, 6970301340065, 'bombillo luminoso', 'luminosito xd', 6000, 4, 'ACTIVO'),
+(2, 47400097742, 'Desodorante 107g', 'Sport Triumph', 12500, 5, 'ACTIVO');
 
 -- --------------------------------------------------------
 
@@ -259,13 +258,6 @@ ALTER TABLE `facturacion`
 --
 ALTER TABLE `login`
   ADD CONSTRAINT `login_ibfk_1` FOREIGN KEY (`id_tipo_usuario1`) REFERENCES `tipo_usuario` (`id_tipo_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `producto`
---
-ALTER TABLE `producto`
-  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_proveedor1`) REFERENCES `proveedor` (`id_proveedor`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

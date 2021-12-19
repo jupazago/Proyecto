@@ -345,29 +345,11 @@
         </form>
 
         <div id="precios_totales"></div>
-
+        <br><br>
         <form id="generar_factura">
-        <label>Cliente:</label><br>
-        <input list="nom_proveedor" name="nom_proveedor" class="w3-inputs">
-            <datalist id="nom_proveedor">
-            <?php
-                if(existencia_de_la_conexion()){
-                    require_once("../PHP/conexion.php");    //Hacer conexion con la base de datos
-                }
-                $conexion = conectar();                     //Obtenemos la conexion
-                
-                //Consulta a la base de datos en la tabla provvedor
-                $consulta = mysqli_query($conexion, "SELECT `nombre_cliente` FROM `cliente` ORDER BY `nombre_cliente` ASC") or die ("Error al consultar: proveedores");
-
-                while (($fila = mysqli_fetch_array($consulta))!=NULL){
-                    // traemos los proveedores existentes en la base de datos
-                    $BD_nombre_cliente = $fila['nombre_cliente'];
-                    echo "<option value=".$BD_nombre_cliente."></option>";
-                }
-                mysqli_free_result($consulta); //Liberar espacio de consulta cuando ya no es necesario
-            ?>
-            </datalist><br><br>
-
+            <label>Cliente:</label><br>
+            <input type="text" class="nom_clientee w3-inputs" id="nom_cliente">
+            <br><br>
         </form>
         <button class="w3-btn w3-green" onclick="obtener_detalles_factura()">Generar factura</button>
         <script>

@@ -15,12 +15,13 @@ foco_input();
 
     $consult_codigo_produ = $_POST['codigo_producto'];
 
-    $consulta = mysqli_query($conexion, "SELECT `nombre_producto`,`precio_producto`, proveedor.nombre_proveedor FROM `producto` INNER JOIN proveedor ON proveedor.id_proveedor=producto.id_proveedor1 WHERE `cod_producto`='$consult_codigo_produ'") or die ("Error al consultar: datos de  producto");
+    $consulta = mysqli_query($conexion, "SELECT `id_producto`,`nombre_producto`,`precio_producto`, proveedor.nombre_proveedor FROM `producto` INNER JOIN proveedor ON proveedor.id_proveedor=producto.id_proveedor1 WHERE `cod_producto`='$consult_codigo_produ'") or die ("Error al consultar: datos de  producto");
     //Capturamos los datos
     while (($fila = mysqli_fetch_array($consulta))!=NULL) {
 ?>  </tr><table border="0" id="tablaprueba" width="100%"> 
     <tbody id="tbodyform">
-    
+        
+        <td width="25%" class="ides" style="display:none"><?php echo $fila['id_producto'] ?></td>
         <td width="25%" class="names"><?php echo ucwords($fila['nombre_producto']) ?></td>
         <td width="15%"><?php echo $fila['nombre_proveedor'] ?></td>
         <td width="15%" class="precios"><span class="precio"><?php echo $fila['precio_producto'] ?></span></td>

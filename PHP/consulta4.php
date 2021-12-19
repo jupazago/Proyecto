@@ -16,7 +16,7 @@
     
     $encontrado = false;
 
-    $consulta = mysqli_query($conexion, "SELECT `id_proveedor`,`nombre_proveedor` FROM `proveedor`") or die ("Error al consultar: datos de empleados");
+    $consulta = mysqli_query($conexion, "SELECT `id_proveedor`,`nombre_proveedor` FROM `proveedor`") or die ("Error al consultar: datos de producto");
     //Capturamos el id del proveedor con una consulta
     while (($fila = mysqli_fetch_array($consulta))!=NULL) {
         if($fila['nombre_proveedor']==$insert_nombre_prove){
@@ -27,7 +27,8 @@
     mysqli_free_result($consulta);
 
     if($encontrado==true){
-        $consulta = mysqli_query($conexion, "INSERT INTO `producto`( `cod_producto`, `nombre_producto`, `descripcion`, `precio_producto`, `id_proveedor1`, `estado`) VALUES ('$insert_codigo_produ','$insert_nombre_produ','$insert_descri_produ','$insert_precio_produ','$insert_id_prove','ACTIVO')") or die ("Error al consultar: Agregar nuevo producto");
+        $consulta = mysqli_query($conexion, "INSERT INTO `producto`( `cod_producto`, `nombre_producto`, `descripcion`, `precio_producto`, `id_proveedor1`, `estado`) 
+        VALUES ('$insert_codigo_produ','$insert_nombre_produ','$insert_descri_produ','$insert_precio_produ','$insert_id_prove','ACTIVO')") or die ("Error al consultar: Agregar nuevo producto");
         //Capturamos el id del proveedor con una consulta
         echo "<br>Agregado con éxito <br>";
     }else{
