@@ -21,11 +21,11 @@ foco_input();
 ?>  </tr><table border="0" id="tablaprueba" width="100%"> 
     <tbody id="tbodyform">
         
-        <td width="25%" class="ides" style="display:none"><?php echo $fila['id_producto'] ?></td>
+        <td width="25%" class="ides" style="display:none" name="ides[]"><?php echo $fila['id_producto'] ?></td>
         <td width="25%" class="names"><?php echo ucwords($fila['nombre_producto']) ?></td>
         <td width="15%"><?php echo $fila['nombre_proveedor'] ?></td>
-        <td width="15%" class="precios"><span class="precio"><?php echo $fila['precio_producto'] ?></span></td>
-        <td width="5%"><input type="number" class="cantidad" value="1" min="1"/></td>
+        <td width="15%" class="precios" name="precios[]"><span class="precio"><?php echo $fila['precio_producto'] ?></span></td>
+        <td width="5%" name="cantidades[]"><input type="number" class="cantidad" value="1" min="1"/></td>
         <td width="20%" class="total"><span class="total"><?php echo $fila['precio_producto'] ?></span></td>
         <td width="20%"><input type="button" class="borrar" value=" X " style="background-color: #f44336;"></input></td>
     

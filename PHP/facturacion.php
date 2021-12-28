@@ -8,15 +8,24 @@
     $conexion = conectar();
     mysqli_set_charset($conexion,"uft8");
 
-    $cliente = $_POST['cliente'];
-    $fecha = $_GET['cliente'];
-    $id_pago = $_GET['cliente'];
-    $id_empleado = $_GET['cliente'];
-    $precio_total = $_GET['cliente'];
+
+
+    $ides			= array();
+    $ides			= $_POST["ides"];			#Oportunidades (array)
+    
+    $precio			= array();
+    $precio 		= $_POST["precios"];
+    
+    $canti 			= array();
+    $canti			= $_POST["cantidades"];
+
+    $precio_final 			= $_POST["total"];
+    $cliente 			    = $_POST["nom_cliente"];
+    
 
     //Creamos la factura
     $insertar = mysqli_query($conexion, "INSERT INTO `facturacion`(`name_cliente`, `fecha`, `id_modo_pago1`, `id_empleado1`, `precio_total`, `estado`) 
-    VALUES ($cliente,[value-3],[value-4],[value-5],[value-6],'ACTIVO')") or die ("Error al consultar: agregar nuevo usuario");
+    VALUES ($cliente,date('Y-m-d H:i:s'),1,1,$precio_final,'ACTIVO')") or die ("Error al consultar: agregar nueva factura");
     
     mysqli_free_result($insertar); //Libero consulta
 

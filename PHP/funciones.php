@@ -337,21 +337,20 @@
                     </tr>
                 </tfoot>
                 <tbody id="tbodyform">
-                <tr id="respuesta7">
+                <tr id="respuesta7" name="total">
                     
                 </tr>
                 </tbody>
             </table>
-        </form>
+
 
         <div id="precios_totales"></div>
         <br><br>
-        <form id="generar_factura">
             <label>Cliente:</label><br>
-            <input type="text" class="nom_clientee w3-inputs" id="nom_cliente">
+            <input type="text" class="nom_clientee w3-inputs" id="nom_cliente" name="nom_cliente">
             <br><br>
         </form>
-        <button class="w3-btn w3-green" onclick="obtener_detalles_factura()">Generar factura</button>
+        <button class="w3-btn w3-green" id="facturacion">Generar factura</button>
         <script>
             $('#Enviar7').click(function(){
                 $.ajax({
@@ -362,12 +361,31 @@
                         $('#respuesta7').append(res);   //Append para agregar nuevo
                     },
                     error: function(res){
-                        alert("Problemas al tratar de enviar el formulario");
+                        alert("Problemas al tratar de enviar el formulario productos en facturación");
                     }
                 });
             });
 
             foco_input();
+        </script>
+        <script>
+            /*
+            $('#facturacion').click(function(){
+                $.ajax({
+                    url:'../PHP/facturacion.php',
+                    type:'POST',
+                    data: $('#form_ventas_2').serialize(),
+                    success: function(res){
+                        $('#respuesta7').append(res);   //Append para agregar nuevo
+                    },
+                    error: function(res){
+                        alert("Problemas al tratar de enviar el formulario de facturación");
+                    }
+                });
+            });
+
+            foco_input();
+            */
         </script>
 <?PHP
     }
